@@ -3,7 +3,20 @@ from yaplLexer import yaplLexer
 from yaplParser import yaplParser
 from antlr4.tree.Trees import Trees
 from graphviz import Digraph
-import os
+
+def visualize_tree(tree, filename):
+    graph = Digraph(comment='YAPL Syntax Tree')
+    build_graph(tree, graph)
+    graph.render(filename, view=True)
+
+def build_graph(tree, graph, parent=None):
+    if tree.getText():
+        node = str(hash(tree))
+        graph.node(node, tree.getText())
+        if parent:
+            graph.edge(parent, node)
+        for i in range(tree.getChildCount()):
+            build_graph(tree.getChild(i), graph, node)
 
 class yaplListener(ParseTreeListener):
     def enterExpression(self, ctx:yaplParser.ExpressionContext):
@@ -27,6 +40,8 @@ def main():
     yl = yaplListener()
     walker = ParseTreeWalker()
     walker.walk(yl, tree)
+
+    visualize_tree(tree, "arbol_sintactico.pdf")
 
 if __name__ == '__main__':
     main()
