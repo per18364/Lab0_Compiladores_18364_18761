@@ -22,6 +22,8 @@ expression:
 	| expression ('+' | '-') expression
 	| expression '<-' expression
 	| '{' (expression ';')+ '}'
+	| expression '<=' expression
+	| expression '=>' expression
 	| expression '=' expression
 	| expression '<' expression
 	| ID '<-' expression
@@ -39,19 +41,19 @@ expression:
 // Palabras reservadas
 CLASS: 'class';
 ELSE: 'else';
-FALSE: 'false';
 FI: 'fi';
 IF: 'if';
 IN: 'in';
 INHERITS: 'inherits';
-ISVOID: 'isvoid';
 LOOP: 'loop';
 POOL: 'pool';
 THEN: 'then';
 WHILE: 'while';
 NEW: 'new';
+ISVOID: 'isvoid';
 NOT: 'not';
 TRUE: 'true';
+FALSE: 'false';
 
 // Expecificaciones lexicas
 STRING:
