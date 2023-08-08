@@ -46,7 +46,11 @@ class yaplListener(ParseTreeListener):
 
 def main():
     # Lee el código fuente de YAPL desde un archivo o un string
-    input_stream = FileStream("codigo.yapl")
+    # input_stream = FileStream("codigo.yapl")
+    with open("codigo.yapl", "r", encoding="utf-8") as file:
+        input_text = file.read()
+    input_stream = InputStream(input_text)
+
     lexer = yaplLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = yaplParser(stream)
@@ -58,7 +62,9 @@ def main():
     parser.removeErrorListeners()
     parser.addErrorListener(CustomErrorListener())
 
-    tree = parser.expression()
+    # tree = parser.expression()
+    tree = parser.program()
+
 
     # Visualizar el árbol de análisis sintáctico en consola
     print('Arbol de analisis sintactico: ',

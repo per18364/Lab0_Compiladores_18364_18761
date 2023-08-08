@@ -1,24 +1,18 @@
-class Main {
-  i: IO;
+class Animal {
+    int age;
+    string name;
+    
+    void bark() {
+        if (age < 10) {
+            return;
+        } else {
+            return;
+        }
+    }
+    
+    int getAge() {
+        return age;
+    }
+}
 
-  main() : Object {
-    i.out_string("Enter the number to compute Fibonacci: ");
-    let num : Int <- i.in_int() in;
-    if num < 0 then {
-      i.out_string("Invalid input, please enter a non-negative number.\n");
-    }; else {
-      i.out_string("Fibonacci sequence: ");
-      let a : Int <- 0 in
-      let b : Int <- 1 in
-      WHILE num => 0 LOOP {
-        i.out_int(a);
-        let c : Int <- a + b in
-        a <- b;
-        b <- c;
-        i.out_string(", ");
-        num <- num - 1
-      };
-      i.out_string("\n");
-    };
-  };
-};
+
