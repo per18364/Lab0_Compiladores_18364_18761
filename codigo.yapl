@@ -1,12 +1,12 @@
-class Animal {
+class Animal inherits Object {
     int age;
     string name;
     
-    void bark() {
+    int bark() {
         if (age < 10) {
-            return;
+            return 0;
         } else {
-            return;
+            return 1;
         }
     }
     
@@ -14,5 +14,6 @@ class Animal {
         return age;
     }
 }
+
 
 
